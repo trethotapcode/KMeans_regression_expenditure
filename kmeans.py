@@ -24,7 +24,7 @@ def kmeans_regression(table, k):
     feature = table[1:, 1:3].astype(float)
     centroid = feature[2:5]
 
-    for x in range(100):
+    for _ in range(100):
         distance = np.array(
             [np.sqrt(np.sum((feature - centroid[i, :])**2, axis=1)) for i in range(k)]).T
         votes = np.argmin(distance, axis=1)
@@ -35,7 +35,6 @@ def kmeans_regression(table, k):
             break
         else:
             centroid = new_centroids
-            continue
 
     return centroid
 
